@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import Container from '../ui/Container';
 import { HiHome, HiSparkles, HiOfficeBuilding, HiColorSwatch, HiArrowRight } from 'react-icons/hi';
 import { FaLeaf, FaCouch } from 'react-icons/fa';
@@ -100,9 +101,11 @@ export default function ServicesPreview() {
           {/* Central Featured Image */}
           <div className="md:col-span-2 lg:col-span-3 my-8">
             <div className="relative rounded-3xl overflow-hidden">
-              <img
+              <Image
                 src="/images/hero/cleaner.jpeg"
                 alt="Professional eco-friendly cleaning service"
+                width={1200}
+                height={400}
                 className="w-full h-[300px] lg:h-[400px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-dark/90 to-dark/50 flex items-center">

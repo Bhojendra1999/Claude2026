@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { HiPhone, HiStar, HiCheckCircle } from 'react-icons/hi';
 import { FaLeaf } from 'react-icons/fa';
 import Container from '../ui/Container';
@@ -88,10 +89,13 @@ export default function HeroSection() {
             {/* Main Image Card */}
             <div className="relative bg-white rounded-3xl shadow-lifted p-4 lg:p-6">
               <div className="relative rounded-2xl overflow-hidden">
-                <img
+                <Image
                   src="/images/hero/interior.jpeg"
                   alt="Clean and organized living space"
+                  width={800}
+                  height={450}
                   className="w-full h-[350px] lg:h-[450px] object-cover"
+                  priority
                 />
                 {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-dark/20 to-transparent"></div>

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import Container from '../ui/Container';
 import { HiArrowRight, HiClock } from 'react-icons/hi';
 import { FaLeaf } from 'react-icons/fa';
@@ -63,9 +64,11 @@ export default function BlogSection() {
               <article className="bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-card transition-all duration-300 group-hover:-translate-y-2 border border-forest-100 h-full flex flex-col">
                 {/* Image */}
                 <div className="relative h-52 overflow-hidden">
-                  <img
+                  <Image
                     src={post.image}
                     alt={post.title}
+                    width={400}
+                    height={208}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   {/* Category Badge */}

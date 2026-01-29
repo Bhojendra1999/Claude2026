@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { HiCheckCircle, HiShieldCheck, HiUserGroup, HiClock } from 'react-icons/hi';
 import { FaLeaf } from 'react-icons/fa';
 import Container from '../ui/Container';
@@ -47,9 +48,11 @@ export default function AboutSection() {
               {/* Main large image */}
               <div className="col-span-7 row-span-2">
                 <div className="rounded-3xl overflow-hidden shadow-card h-full">
-                  <img
+                  <Image
                     src="/images/hero/interior.jpeg"
                     alt="Clean modern interior"
+                    width={600}
+                    height={400}
                     className="w-full h-full object-cover min-h-[300px]"
                   />
                 </div>
@@ -57,9 +60,11 @@ export default function AboutSection() {
               {/* Top right image */}
               <div className="col-span-5">
                 <div className="rounded-3xl overflow-hidden shadow-card">
-                  <img
+                  <Image
                     src="/images/hero/cleaner.jpeg"
                     alt="Professional cleaner at work"
+                    width={400}
+                    height={160}
                     className="w-full h-40 object-cover"
                   />
                 </div>
@@ -67,9 +72,11 @@ export default function AboutSection() {
               {/* Bottom right image */}
               <div className="col-span-5">
                 <div className="rounded-3xl overflow-hidden shadow-card">
-                  <img
+                  <Image
                     src="/images/hero/team.jpeg"
                     alt="Our cleaning team"
+                    width={400}
+                    height={160}
                     className="w-full h-40 object-cover"
                   />
                 </div>
@@ -78,9 +85,11 @@ export default function AboutSection() {
 
             {/* Full width image below */}
             <div className="mt-4 rounded-3xl overflow-hidden shadow-card">
-              <img
+              <Image
                 src="/images/hero/img.jpeg"
                 alt="Professional cleaning service"
+                width={800}
+                height={160}
                 className="w-full h-40 object-cover"
               />
             </div>
