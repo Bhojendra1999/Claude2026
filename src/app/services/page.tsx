@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 import Container from '@/components/ui/Container';
 import ServiceCard from '@/components/services/ServiceCard';
 import ServiceFeatures from '@/components/services/ServiceFeatures';
@@ -109,6 +111,8 @@ const services = [
 export default function ServicesPage() {
   return (
     <>
+      <Header />
+      <main>
       {/* Header Section */}
       <section className="py-16 bg-dark text-white">
         <Container>
@@ -163,6 +167,8 @@ export default function ServicesPage() {
 
       {/* FAQ Section */}
       <ServiceFAQ />
+      </main>
+      <Footer />
     </>
   );
 }
