@@ -1,33 +1,20 @@
 import { cookies } from 'next/headers';
 import { AdminSession } from '@/types/admin';
-import fs from 'fs';
-import path from 'path';
 
 export const ADMIN_COOKIE_NAME = 'admin_session';
 const SESSION_DURATION = 24 * 60 * 60 * 1000; // 24 hours
-const SESSIONS_FILE = path.join(process.cwd(), 'src', 'data', 'sessions.json');
 
-// File-based session store for MVP persistence
+// In-memory session store (works on Vercel but doesn't persist across function restarts)
+// For production, migrate to Vercel KV, Redis, or database
+const sessions = new Map<string, AdminSession>();
+
 function loadSessions(): Map<string, AdminSession> {
-  try {
-    if (fs.existsSync(SESSIONS_FILE)) {
-      const data = fs.readFileSync(SESSIONS_FILE, 'utf-8');
-      const sessionsObj = JSON.parse(data);
-      return new Map(Object.entries(sessionsObj));
-    }
-  } catch {
-    // Ignore errors, return empty map
-  }
-  return new Map();
+  return sessions;
 }
 
-function saveSessions(sessions: Map<string, AdminSession>): void {
-  try {
-    const sessionsObj = Object.fromEntries(sessions);
-    fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessionsObj, null, 2));
-  } catch (error) {
-    console.error('Failed to save sessions:', error);
-  }
+function saveSessions(): void {
+  // No-op for in-memory storage
+  // Sessions are already in the Map, no need to save to file
 }
 
 export function generateSessionToken(): string {
@@ -54,7 +41,7 @@ export function createSession(): string {
     expiresAt: Date.now() + SESSION_DURATION,
   };
   sessions.set(token, session);
-  saveSessions(sessions);
+  saveSessions();
   return token;
 }
 
@@ -67,7 +54,7 @@ export function isValidSession(token: string | undefined): boolean {
 
   if (Date.now() > session.expiresAt) {
     sessions.delete(token);
-    saveSessions(sessions);
+    saveSessions();
     return false;
   }
 
