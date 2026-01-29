@@ -1,4 +1,6 @@
 import { Metadata } from 'next';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 import Container from '@/components/ui/Container';
 import PricingCalculator from '@/components/pricing/PricingCalculator';
 import PricingFeatures from '@/components/pricing/PricingFeatures';
@@ -21,6 +23,8 @@ const trustBadges = [
 export default function PricingPage() {
   return (
     <>
+      <Header />
+      <main>
       {/* Header Section */}
       <section className="py-16 bg-dark text-white">
         <Container>
@@ -116,6 +120,8 @@ export default function PricingPage() {
           </div>
         </Container>
       </section>
+      </main>
+      <Footer />
     </>
   );
 }
