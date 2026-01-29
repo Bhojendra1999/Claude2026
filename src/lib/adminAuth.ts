@@ -64,7 +64,7 @@ export function isValidSession(token: string | undefined): boolean {
 export function deleteSession(token: string): void {
   const sessions = loadSessions();
   sessions.delete(token);
-  saveSessions(sessions);
+  saveSessions();
 }
 
 export async function getSessionToken(): Promise<string | undefined> {
