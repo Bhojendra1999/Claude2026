@@ -1,0 +1,29 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="url(#gradient)"/>
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="0" x2="800" y2="600" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#e0f2fe"/>
+      <stop offset="100%" stop-color="#dcfce7"/>
+    </linearGradient>
+  </defs>
+
+  <!-- House icon -->
+  <g transform="translate(300, 200)">
+    <path d="M100 180 L100 280 L220 280 L220 180" stroke="#0ea5e9" stroke-width="3" fill="white"/>
+    <path d="M80 180 L160 100 L240 180" stroke="#0ea5e9" stroke-width="3" fill="none" stroke-linejoin="round"/>
+    <rect x="130" y="220" width="60" height="60" fill="#0ea5e9" opacity="0.3"/>
+    <circle cx="155" cy="250" r="3" fill="#0ea5e9"/>
+  </g>
+
+  <!-- Sparkles -->
+  <g opacity="0.6">
+    <path d="M650 150 L655 160 L665 165 L655 170 L650 180 L645 170 L635 165 L645 160 Z" fill="#10b981"/>
+    <path d="M550 400 L553 406 L559 409 L553 412 L550 418 L547 412 L541 409 L547 406 Z" fill="#0ea5e9"/>
+    <path d="M200 100 L204 108 L212 112 L204 116 L200 124 L196 116 L188 112 L196 108 Z" fill="#10b981"/>
+  </g>
+
+  <!-- Text -->
+  <text x="400" y="500" font-family="Arial, sans-serif" font-size="24" fill="#0369a1" text-anchor="middle" font-weight="bold">
+    Professional Cleaning Services
+  </text>
+</svg>
