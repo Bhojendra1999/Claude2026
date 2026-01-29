@@ -23,6 +23,7 @@ export default function AdminDashboard() {
   });
   const [isLoading, setIsLoading] = useState(true);
   const [deleteId, setDeleteId] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   // Check authentication
   useEffect(() => {
@@ -33,10 +34,12 @@ export default function AdminDashboard() {
           setIsAuthenticated(true);
         } else {
           setIsAuthenticated(false);
+          setError('❌ Unauthorized: Environment variables (ADMIN_USERNAME, ADMIN_PASSWORD) may not be set in Vercel.');
           router.push('/admin/login');
         }
-      } catch {
+      } catch (err) {
         setIsAuthenticated(false);
+        setError(`⚠️ Auth check failed: ${err instanceof Error ? err.message : 'Unknown error'}`);
         router.push('/admin/login');
       }
     };
@@ -149,6 +152,16 @@ export default function AdminDashboard() {
           <h1 className="text-2xl lg:text-3xl font-bold text-heading">Dashboard</h1>
           <p className="text-subheading mt-1">Manage your bookings</p>
         </div>
+
+        {/* Error Display */}
+        {error && (
+          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl">
+            <p className="text-red-700 text-sm font-medium">{error}</p>
+            <p className="text-red-600 text-xs mt-2">
+              Go to Vercel Dashboard → Settings → Environment Variables and add ADMIN_USERNAME and ADMIN_PASSWORD, then redeploy.
+            </p>
+          </div>
+        )}
 
         {/* Stats */}
         {stats && (

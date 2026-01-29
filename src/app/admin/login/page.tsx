@@ -30,10 +30,15 @@ export default function AdminLoginPage() {
         router.push('/admin');
         router.refresh();
       } else {
-        setError(data.error || 'Login failed');
+        // Show detailed error message
+        if (data.authenticated === false) {
+          setError('❌ Invalid credentials. Environment variables may not be set in Vercel. Check ADMIN_USERNAME and ADMIN_PASSWORD.');
+        } else {
+          setError(data.error || 'Login failed. Please check your credentials.');
+        }
       }
-    } catch {
-      setError('An error occurred. Please try again.');
+    } catch (err) {
+      setError(`⚠️ Network error: ${err instanceof Error ? err.message : 'Please try again.'}`);
     } finally {
       setIsLoading(false);
     }
